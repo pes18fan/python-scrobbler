@@ -188,6 +188,18 @@ def check_positions():
             players.pop(sender, None)
             continue
 
+        artist = meta.get("xesam:artist", [""])[0]
+        if not hasattr(ARTISTS_WITH_COMMAS, artist):
+            artist = artist.split(",")[0]
+
+        title = meta.get("xesam:title", "")
+        album = meta.get("xesam:album", "")
+
+        # keep the now playing status updated
+        status = info.get("status", "")
+        if status == "Playing":
+            network.update_now_playing(artist, title, album)
+
         # calculate the duration that has been listened to
         delta = pos - info["last_position"]
         if delta > 0:
@@ -195,13 +207,6 @@ def check_positions():
         info["last_position"] = pos
 
         if info["listened"] >= (2 * length) // 3 and not info["scrobbled"]:
-            artist = meta.get("xesam:artist", [""])[0]
-
-            if not hasattr(ARTISTS_WITH_COMMAS, artist):
-                artist = artist.split(",")[0]
-
-            title = meta.get("xesam:title", "")
-            album = meta.get("xesam:album", "")
             ts = info["start_time"]
             log.info(
                 "Scrobbling after %.1f%% play: %s - %s [%s]",
