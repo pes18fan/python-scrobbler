@@ -184,7 +184,7 @@ def check_positions():
                 dbus_interface="org.freedesktop.DBus.Properties",
             )
         except dbus.exceptions.DBusException:
-            log.warning("Lost connection to %s, removing", sender)
+            log.warning("Lost connection to %s, removing", get_player_name(sender))
             players.pop(sender, None)
             continue
 
