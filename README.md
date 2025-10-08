@@ -7,9 +7,17 @@ tracks played on local music players to Last.fm.
 >The scrobbler deliberately avoids scrobbling from Spotify, as it has its own
 >setting to integrate it with Last.fm.
 
-To use it, you need to add a Last.fm API key and secret, and a session key to
-`~/.config/python-scrobbler/config.ini` then run the script. To automate it, you
-can make it a systemd service.
+To use it, you need to add a Last.fm API key, API secret, and a session key to
+`~/.config/python-scrobbler/config.ini` then run the script. The `config.ini` file
+should be in the following format:
+
+```ini
+api_key=YOUR_API_KEY
+api_secret=YOUR_API_SECRET
+session_key=YOUR_SESSION_KEY
+```
+
+To automate the script, you can make it a systemd service.
 
 You can get an API key and secret by creating an API account at `https://last.fm/api`.
 To get a session key, run `session_key_getter.py`. It will open a web URL where
