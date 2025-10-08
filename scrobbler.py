@@ -141,7 +141,8 @@ def properties_changed(interface, changed, invalidated, sender):
                     album = md.get("xesam:album", "")
 
                     try:
-                        log.info("Now playing %s - %s [%s]", artist, title, album)
+                        log.info(
+                            "Now playing %s - %s [%s]", artist, title, album)
                         network.update_now_playing(artist, title, album)
                     except Exception:
                         log.exception(
@@ -184,7 +185,8 @@ def check_positions():
                 dbus_interface="org.freedesktop.DBus.Properties",
             )
         except dbus.exceptions.DBusException:
-            log.warning("Lost connection to %s, removing", get_player_name(sender))
+            log.warning("Lost connection to %s, removing",
+                        get_player_name(sender))
             players.pop(sender, None)
             continue
 
@@ -219,7 +221,8 @@ def check_positions():
                 network.scrobble(artist, title, ts, album)
                 info["scrobbled"] = True
             except Exception:
-                log.exception("Failed scrobble for %s - %s [%s]", artist, title)
+                log.exception(
+                    "Failed scrobble for %s - %s [%s]", artist, title, album)
 
     return True  # Keep timeout alive
 
