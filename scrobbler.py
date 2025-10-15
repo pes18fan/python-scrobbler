@@ -16,7 +16,7 @@ ARTISTS_WITH_COMMAS = ["Tyler, the Creator", "Dream, Ivory"]
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s %(levelname)s %(message)s",
-    stream=sys.stdout,
+    stream=sys.stderr,
 )
 log = logging.getLogger(__name__)
 
