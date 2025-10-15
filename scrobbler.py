@@ -44,8 +44,8 @@ try:
         api_key=api_key, api_secret=api_secret, session_key=session_key
     )
     log.info("Connected to Last.fm as session %s", session_key[:8] + "...")
-except Exception:
-    log.exception("Failed to initialize pylast network")
+except Exception as e:
+    log.exception("Failed to initialize pylast network: %s", e)
     sys.exit(1)
 
 # Set up D-Bus
@@ -220,9 +220,9 @@ def check_positions():
             try:
                 network.scrobble(artist, title, ts, album)
                 info["scrobbled"] = True
-            except Exception:
+            except Exception as e:
                 log.exception(
-                    "Failed scrobble for %s - %s [%s]", artist, title, album)
+                    "Failed scrobble for %s - %s [%s]: %s", artist, title, album, e)
 
     return True  # Keep timeout alive
 
