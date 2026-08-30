@@ -23,5 +23,7 @@ if not os.path.exists(SESSION_KEY_FILE):
             break
         except pylast.WSError:
             time.sleep(1)
+
+    print(f"Session key saved to {SESSION_KEY_FILE}.")
 else:
     session_key = open(SESSION_KEY_FILE).read()

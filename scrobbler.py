@@ -88,6 +88,9 @@ def get_player_name(sender):
 def properties_changed(interface, changed, invalidated, sender):
     """Handle new metadata or playback status changes."""
     global current_player
+
+    _ = invalidated
+
     try:
         if interface != "org.mpris.MediaPlayer2.Player":
             return

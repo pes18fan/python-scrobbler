@@ -1,0 +1,11 @@
+anyio==4.14.2
+dbus-python==1.4.0
+ginext-core==0.8.1
+h11==0.16.0
+httpcore2==2.12.0
+httpx2==2.12.0
+idna==3.19
+pycairo==1.29.1
+PyGObject==3.58.0
+pylast==7.1.0
+truststore==0.10.4

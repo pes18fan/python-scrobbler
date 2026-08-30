@@ -12,6 +12,7 @@ To use it, you need to add a Last.fm API key, API secret, and a session key to
 should be in the following format:
 
 ```ini
+[lastfm]
 api_key=YOUR_API_KEY
 api_secret=YOUR_API_SECRET
 session_key=YOUR_SESSION_KEY
